@@ -5,6 +5,7 @@ import { ChainController, CoreHelperUtil, type UseAppKitNetworkReturn } from '@r
 import { PACKAGE_VERSION } from './constants.js'
 import type { AppKitNetwork } from '@reown/appkit/networks'
 import { onUnmounted, ref, type Ref } from 'vue'
+import { fetchBalance } from '../src/utils/BalanceUtil.js'
 
 // -- Views ------------------------------------------------------------
 export * from '@reown/appkit-scaffold-ui'
@@ -59,6 +60,14 @@ export function useAppKitNetwork(): Ref<UseAppKitNetworkReturn> {
   })
 
   return state
+}
+
+export async function useAppKitBalance() {
+  if (!modal) {
+    throw new Error('AppKit not initialized. Please call createAppKit first.')
+  }
+
+  return await fetchBalance(modal)
 }
 
 export * from '../src/library/vue/index.js'

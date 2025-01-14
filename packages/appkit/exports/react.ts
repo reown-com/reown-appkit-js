@@ -5,6 +5,7 @@ import { CoreHelperUtil, type UseAppKitNetworkReturn } from '@reown/appkit-core'
 import { PACKAGE_VERSION } from './constants.js'
 import { useAppKitNetworkCore } from '@reown/appkit-core/react'
 import type { AppKitNetwork } from '@reown/appkit/networks'
+import { fetchBalance } from '../src/utils/BalanceUtil.js'
 
 // -- Views ------------------------------------------------------------
 export * from '@reown/appkit-scaffold-ui'
@@ -60,3 +61,11 @@ export function useAppKitNetwork(): UseAppKitNetworkReturn {
 }
 
 export { useAppKitAccount } from '@reown/appkit-core/react'
+
+export async function useAppKitBalance() {
+  if (!modal) {
+    throw new Error('AppKit not initialized. Please call createAppKit first.')
+  }
+
+  return await fetchBalance(modal)
+}
