@@ -38,7 +38,7 @@ export const SafeLocalStorageKeys = {
   CONNECTION_STATUS: '@appkit/connection_status',
   SIWX_AUTH_TOKEN: '@appkit/siwx-auth-token',
   SIWX_NONCE_TOKEN: '@appkit/siwx-nonce-token',
-  SOCIAL_PROVIDER: '@appkit/social_provider'
+  TELEGRAM_SOCIAL_PROVIDER: '@appkit/social_provider'
 } as const satisfies Record<string, keyof SafeLocalStorageItems>
 
 export type SafeLocalStorageKey = keyof SafeLocalStorageItems | NamespacedConnectorKey
