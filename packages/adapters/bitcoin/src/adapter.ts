@@ -270,6 +270,11 @@ export class BitcoinAdapter extends AdapterBlueprint<BitcoinConnector> {
     return Promise.resolve('0x')
   }
 
+  public override async walletGetAssets(
+    _params: AdapterBlueprint.WalletGetAssetsParams
+  ): Promise<AdapterBlueprint.WalletGetAssetsResponse> {
+    return Promise.resolve({})
+  }
   // -- Private ------------------------------------------ //
   private bindEvents(connector: BitcoinConnector) {
     this.unbindEvents()
